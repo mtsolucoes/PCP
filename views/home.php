@@ -5,7 +5,7 @@
 <div class="col-sm-12 col-lg-12 p-0">
     <div class="row p-0 m-0">
         <div class="col-sm-8  grafic-container shadow-container p-0">
-            <div class="text-left pl-5 grafic-title mb-3 col-sm-12 mt-3"><h4 class="font-weight-light">Demanda Semanal</h4></div>
+            <div class="text-left pl-5 grafic-title mb-3 col-sm-12 mt-3"><h4 class="font-weight-light">Demanda</h4></div>
             <div class="col-sm-12 ct-chart ct-perfect-fourth"></div>
         </div>
         <div class="col-sm-3">
