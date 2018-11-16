@@ -1,0 +1,228 @@
+body{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #777;
+}
+strong{
+    font-weight: 900;
+}
+ul{
+    list-style: none;
+}
+.grafic-title{
+    border-bottom: 1px solid #ddd;
+}
+.logo{
+    padding: 7px 0 0 50px;
+}
+.btn-login{
+    background-color: #30a5ff;
+    color: #fff;
+}
+.menu-secondary{
+    background-color: #fff;
+    border-radius: 5px;
+    height: 150px;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.shadow-container{
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.grafic-container{
+    background-color: #fff;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+.container-content{
+    position: relative;
+    top: 50px;
+    background-color: #f1f4f7;
+    min-height: 600px;
+}
+.sidebar{
+    padding-left: 0;
+}
+.formulario-login{
+    background-color: #fff;
+    border-radius: 20px;
+}
+.header-tmp{
+    height: 50px;
+    background-color:#222;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.search form input{
+    height:40px;
+}
+.profile-bar{
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+.link-logoff{
+    text-decoration: none;
+}
+.link-logoff:hover{
+    text-decoration: none;
+    color: #f1f1f1;
+}
+.link-logoff{
+    color: #fff;
+    position:relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.profile-status{
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #999;
+}
+.indicator{
+    width:10px;
+    height: 10px;
+    border-radius: 9999px;
+    margin-right: 5px;
+    display: inline-block;
+}
+.label-success{
+    background-color: #8ad919;
+}
+.option{
+    width:100%;
+    font-size: 15px;
+}
+.option a{
+    text-decoration: none;
+    color: #222;
+    padding: 15px;
+    display: block;
+    font-size: 14px;
+}
+.option:hover{
+    background-color: #30a5ff;
+}
+.option:hover a{
+    color: #fff;
+    text-decoration: none;
+}
+.active{
+    background-color: #30a5ff !important;
+}
+.active a{
+    color: #fff;
+}
+.sidebar{
+    position: fixed;
+    bottom: 0px;
+    top: 50px;
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+    padding-right: 0;
+}
+.breadcrumb .active{
+    float: left;
+    color: #777;
+    background-color: transparent !important;
+}
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
+.breadcrumb li .fa{
+    font-size: 12px;
+}
+#subMenu1 .option a{
+    padding-left: 1.5rem;
+    font-size: 12px;
+}
+
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+    stroke: #007bff !important;
+}
+
+.ct-bar{
+    stroke-width: 50px !important;
+}
+
+.ct-perfect-fourth{
+    width: 600px !important;
+    height: 400px !important;
+    margin-left: 20px !important;
+}
+
+.table-product{
+    margin: auto;
+}
+.table{
+    font-size: 12px;
+    background-color: #fff;
+}
+
+.breadcrumb{
+    border-radius: 0;
+    height: 35px;
+    padding: .40rem 1rem;
+}
+footer{
+    height: 25px;
+    background-color: #ddd;
+    position: relative;
+    bottom: 0px;
+}
+.btn-search{
+    top: -3px;
+    position: relative;
+}
+.form-control:disabled{
+    background-color: #f1f1f1;
+    cursor: no-drop;
+}
+
+.search-tabela table tbody{
+    cursor: pointer;
+}
+
+.table-link{
+    text-decoration: none;
+    color: #808080;
+}
+.table-link:hover{
+    text-decoration: none;
+    color: #808080;
+}
+.fa-circle{
+    margin-right: 2px !important;
+}
+.em-aberto{
+    color: #e9dc40;
+}
+.em-digitacao{
+    color: #ff66e3;
+}
+.atendido{
+    color: #3fb57a;
+}
+.venda-agenciada{
+    color: #ff7835;
+}
+.cancelado{
+    color:#cbcbcb;
+}
+.em-andamento{
+    color: #0065f9;
+}
+
+/*-------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+*/
+
