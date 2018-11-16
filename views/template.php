@@ -44,18 +44,12 @@
                         <span class="indicator label-success"></span>Online
                     </div>
                 </div>
-                <!-- Barra de busca Menu -->
-                <div class="search p-2">
-                    <form role="search">
-                        <input type="text" name="search" id="search" placeholder="Pesquisar..." class="form-control">
-                    </form>
-                </div>
                 <!-- Menu -->
                 <div class="menu">
                     <ul class="nav menu-int mt-2">
                         <li class="option <?php echo($_GET['url'] == 'home')? 'active': '' ?>"><a href="<?php echo BASE_URL; ?>home"><em class="fa fa-calendar">&nbsp;</em>Início</a></li>
                         <li class="option <?php echo($_GET['url'] == 'produtos')? 'active': '' ?>"><a href="<?php echo BASE_URL; ?>produtos"><em class="fa fa-calendar">&nbsp;</em>Produtos</a></li>
-                        <li class="option <?php echo($_GET['url'] == 'controle')? 'active': '' ?>"><a href="#subMenu1" role="button" aria-hidden="false" aria-controls="subMenu1" data-toggle="collapse" ><em class="fa fa-calendar">&nbsp;</em>Controle<span data-toggle="collapse" href="#sub-item-1" class="icon float-right"><em class="fa fa-plus" id="fa-plus"></em></span></a></li>
+                        <li class="option <?php echo($_GET['url'] == 'controle')? 'active': '' ?>"><a href="#subMenu1" class="btn-sub" id="subControle" role="button" aria-hidden="false" aria-controls="subMenu1" data-toggle="collapse" ><em class="fa fa-calendar">&nbsp;</em>Controle<span data-toggle="collapse"class="icon float-right"><em class="fas fa-sort-down"></em></span></a></li>
                             <ul id="subMenu1" class="nav menu-int collapse">
                                 <li class="option"><a href="<?php echo BASE_URL; ?>controle"><span class="fa fa-arrow-right">&nbsp;</span>Criar Controle</a></li>
                                 <li class="option"><a href="<?php echo BASE_URL; ?>controle/list"><span class="fa fa-arrow-right">&nbsp;</span>Consultar Controles</a></li>
@@ -63,6 +57,12 @@
                             </ul>
                         <li class="option <?php echo($_GET['url'] == '')? 'active': '' ?>"><a href="<?php echo BASE_URL; ?>composicao/index"><em class="fa fa-calendar">&nbsp;</em>Composição</a></li>
                         <li class="option <?php echo($_GET['url'] == 'pedidos/index')? 'active': '' ?>"><a href="<?php echo BASE_URL; ?>pedidos/index"><em class="fa fa-calendar">&nbsp;</em>Pedidos</a></li>                    
+                        <li class="option <?php echo($_GET['url'] == 'relatorios')? 'active': '' ?>"><a href="#subMenu2" class="btn-sub" id="subRelatorios" role="button" aria-hidden="false" aria-controls="subMenu2" data-toggle="collapse" ><em class="fa fa-calendar">&nbsp;</em>Relatórios<span data-toggle="collapse" class="icon float-right"><em class="fas fa-sort-down"></em></span></a></li>
+                            <ul id="subMenu2" class="nav menu-int collapse">
+                                <li class="option"><a href="<?php echo BASE_URL; ?>relatorios"><span class="fa fa-arrow-right">&nbsp;</span>Mensal</a></li>
+                                <li class="option"><a href="<?php echo BASE_URL; ?>relatorios"><span class="fa fa-arrow-right">&nbsp;</span>Pedidos</a></li>
+                                <li class="option"><a href="#"><span class="fa fa-arrow-right">&nbsp;</span>Produtos Compostos</a></li>
+                            </ul>
                     </ul>
                 </div>
             </div>

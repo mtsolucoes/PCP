@@ -1,3 +1,4 @@
+
 function arredondar(x){
 
     return x.toFixed(2);
