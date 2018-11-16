@@ -71,10 +71,26 @@
             <div class="col-sm-12 col-lg-12 p-0">
                 <div class="row m-0 p-0">
                     <!-- Breadcrumb -->
+                    <?php 
+                        $breadcrumb = explode('/', $_GET['url'])
+                    
+                    ?>
                     <div class="col-sm-12 p-0">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo BASE_URL; ?>home"><em class="fa fa-home"></em></a></li>
-                            <li class="breadcrumb-item active"><?php echo mb_convert_case($_GET['url'], MB_CASE_TITLE, 'UTF-8'); ?></li>
+                            <?php 
+                                for($i = 0; $i < count($breadcrumb); $i++){
+                                    if($i == (count($breadcrumb) - 1)){
+                                        echo "<li class='breadcrumb-item active'>".
+                                             mb_convert_case($breadcrumb[$i], MB_CASE_TITLE, 'UTF-8').
+                                             "</li>"; 
+                                    }else{
+                                        echo "<li class='breadcrumb-item link'>".
+                                        "<a class='link' href='".BASE_URL."{$breadcrumb[$i]}'>".mb_convert_case($breadcrumb[$i], MB_CASE_TITLE, 'UTF-8')."</a>".
+                                        "</li>";
+                                    }
+                                }
+                            ?>
                         </ul>
                     </div>
                 </div>

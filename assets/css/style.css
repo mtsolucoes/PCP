@@ -9,6 +9,14 @@ strong{
 ul{
     list-style: none;
 }
+a{
+    text-decoration: none;
+    color: #808080;
+}
+a:hover, a:focus, a:active{
+    text-decoration: none;
+    color: #808080;
+}
 .grafic-title{
     border-bottom: 1px solid #ddd;
 }
@@ -136,6 +144,9 @@ ul{
     padding: 0 5px;
     color: #ccc;
     content: "/\00a0";
+}
+.breadcrumb-item .link{
+    font-weight: 700;
 }
 .breadcrumb li .fa{
     font-size: 12px;
