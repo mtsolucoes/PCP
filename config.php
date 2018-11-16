@@ -16,7 +16,7 @@ if(ENVIRONMENT == 'development'){
     $config['dbname'] = "pcp_mtsolucoes";
     $config['host'] = "31.220.48.193";
     $config['dbuser'] = "root";
-    $config['dbpass'] = "teste";
+    $config['dbpass'] = "teste2";
 }
 
 global $db;
