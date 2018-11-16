@@ -11,12 +11,12 @@ if(ENVIRONMENT == 'development'){
     $config['dbuser'] = "root";
     $config['dbpass'] = "";
 }else{
-    define("BASE_URL", "https://meusite.com.br/");//url da hospoedagem
+    define("BASE_URL", "http://pcpconnect.com.br/PCP");//url da hospoedagem
     //conexão para o banco da hospedagem
-    $config['dbname'] = "estrutura_mvc";
-    $config['host'] = "localhost";
+    $config['dbname'] = "pcp_mtsolucoes";
+    $config['host'] = "31.220.48.193";
     $config['dbuser'] = "root";
-    $config['dbpass'] = "";
+    $config['dbpass'] = "teste";
 }
 
 global $db;
