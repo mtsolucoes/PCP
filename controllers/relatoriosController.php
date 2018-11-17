@@ -1,7 +1,10 @@
 <?php
 
+use Dompdf\Dompdf;
+
 class relatoriosController extends Controller{
 
+    //TABELA LINEAR DE DEMANDA MENSAL
     public function index(){
 
         $dataMensal = array(
@@ -41,14 +44,63 @@ class relatoriosController extends Controller{
         $this->loadTemplate("relatorios/index", $dataMensal);
     }
 
-    public function listarComposto(){
+    //PÁGINA DE LISTAGEM DOS PORODUTOS COMPOSTOS
+    public function compostos(){
         $c = new Composicao();
 
         $data = $c->listarComposicoes();
 
-        $this->loadTemaplate("relatorios/compostos", $data);
+        $this->loadTemplate("relatorios/compostos", $data);
     }
 
+    //PÁGINA DE LISTAGEM DO PEDIDOS
+    public function pedidos(){
+        $b = new Bling();
+        $apikey = $_SESSION['apiuser'];
+        $url = 'https://bling.com.br/Api/v2/pedidos/json';
+
+        $data = $b->executeGetOrder($url, $apikey);
+
+        $this->loadTemplate("relatorios/pedidos", $data);
+    }
+
+    public function loadProductNumber(){
+        $b = new Bling();
+
+        $numero = $_GET['number'];
+        $url = "https://bling.com.br/Api/v2/pedido/{$numero}/json/";
+        $apikey = $_SESSION['apiuser'];
+
+        $data = $b->executeGetOrderNumber($url, $apikey);
+
+        $data = json_encode($data);
+        echo $data;
+    }
+
+    public function generatePdfOrder(){
+        $b = new Bling();
+        $dompdf = new Dompdf();
+
+        $apikey = $_SESSION['apiuser'];
+
+        if(!empty($_GET['number'])){
+            $numero = addslashes($_GET['number']);
+
+            $url = "https://bling.com.br/Api/v2/pedido/{$numero}/json/";
+
+            $data = $b->executeGetOrderNumber($url, $apikey);
+            //$data = json_encode($data);
+
+            $dompdf->loadHtml('<p>Hello World<p>');
+            $dompdf->setPaper('A4', 'landscape');
+
+            $dompdf->render();
+
+            $dompdf->stream();
+        }
+
+
+    }
 }
 
 ?>

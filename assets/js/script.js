@@ -156,6 +156,49 @@ $(document).ready(function(){
         tabelaPedidos(numero);
     });
 
+    $('.moreOrderReport').on('click', function(e){
+        e.preventDefault();
+
+        let numero = $(this).attr('data-number');
+
+        swal({
+            title: 'Pedido',
+            width: 800,
+            onBeforeOpen: function(){
+                tabelaPedidosRelatorio(numero);
+            },
+            html: "<div class='col-md-12 row' id='ModalPedido'>"+
+                  "</div>",
+            showCloseButton: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+            focusConfirm: false
+        });
+
+        tabelaPedidosRelatorio(numero);
+    });
+
+    // $('.gerarPdfPedido').on('click', function(e){
+    //     $e.preventDefault();
+    //     let number = $(this).data('number');
+    //     $.ajax({
+    //         type: 'get',
+    //         url: 'generatePdfOrder',
+    //         data: { number : number},
+    //         success: function(response){
+    //             swal.close();
+    //         },
+    //         error: function(response){
+    //             console.log(response);
+    //             swal({
+    //                 type: 'error',
+    //                 title: 'Ooops...',
+    //                 text: 'Algo deu errado, tente novamente.'
+    //             });
+    //         }
+    //     });
+    // });
+
     $('#addComp').on('click',function () {
 
         swal({
@@ -350,6 +393,67 @@ function tabelaPedidos(number){
 
 }
 
+function tabelaPedidosRelatorio(number){
+    $("#ModalPedido").html('<br><div class="m-auto"><img src="../assets/images/launcher-loader.gif" width="100"></div>');
+
+    $.ajax({
+        type: 'GET',
+        url: 'loadProductNumber',
+        data: { number: number},
+        success: function(retorno){
+            retorno = JSON.parse(retorno);
+            let retornoDireto = retorno[0]['pedido'];
+            let retornoItens = retornoDireto.itens;
+            let retornoCliente = retornoDireto['cliente'];
+
+
+            let pedido = `<div class='col-md-12 text-left'>
+            <ul>
+            <li><strong>Nome: </strong>${retornoCliente['nome']}</li>
+            <li><strong>CNPJ: </strong>${retornoCliente['cnpj']}</li>
+            <li><strong>I.E.: </strong>${retornoCliente['ie']}</li>
+            <li><strong>RG: </strong>${retornoCliente['rg']}</li>
+            <li><strong>Endereço: </strong>${retornoCliente['endereco']}, ${retornoCliente['numero']}</li>
+            <li><strong>Complemento: </strong>${retornoCliente['complemento']}</li>
+            <li><strong>Cidade: </strong>${retornoCliente['cidade']}</li>
+            <li><strong>Bairro: </strong>${retornoCliente['bairro']}</li>
+            <li><strong>CEP: </strong>${retornoCliente['cep']}</li>
+            <li><strong>UF: </strong>${retornoCliente['uf']}</li>
+            <li><strong>E-mail: </strong>${retornoCliente['email']}</li>
+            <li><strong>Celular: </strong>${retornoCliente['celular']}</li>
+            <li><strong>Telefone: </strong>${retornoCliente['fone']}</li>
+            <li><strong>Desconto: </strong>${retornoDireto['desconto']}</li>
+            <li><strong>Observações: </strong>${retornoDireto['observacoes']}</li>
+            <li><strong>Observação Interna: </strong>${retornoDireto['observacaointerna']}</li>
+            <li><strong>Data: </strong> ${retornoDireto['data']}</li>
+            <li><strong>Número: </strong>${retornoDireto['numero']}</li>
+            <li><strong>Valor Frete: </strong>${retornoDireto['valorfrete']}</li>
+            <li><strong>Total de Produtos: </strong>${retornoDireto['totalprodutos']}</li>
+            <li><strong>Total Venda: </strong>${retornoDireto['totalvenda']}</li>
+            <li><strong>Situação: </strong>${retornoDireto['situacao']}</li>
+            <li><strong>Loja: </strong>${retornoDireto['loja']}</li>
+            <li><strong>Numero de Pedido da Loja: </strong>${retornoDireto['numeroPedidoLoja']}</li>
+            <li><strong>Tipo Integração: </strong>${retornoDireto['tipoIntegracao']}</li>`;
+
+            for(let i = 0; i < retornoItens.length; i++){
+                pedido = pedido +
+                        `<li><strong>Item: </strong>${retornoItens[i]['item']['descricao']}</li>
+                        <li><strong>Quantidade item: </strong>${retornoItens[i]['item']['quantidade']}</li>`;
+            }
+            pedido = pedido +
+            `</ul>
+            </div>`;
+            pedido = pedido + 
+            `<div class='col-sm-12 text-center'>
+                <button class="btn btn-search btn-primary" onclick="gerarRelatorio(${retornoDireto['numero']})">Gerar Relatório</button>
+            </div>`;
+            swal.hideLoading();
+            $('#ModalPedido').html(pedido);
+        }
+    });
+
+}
+
 function gerarProducao(produto, quantidade, codigo){
     swal.mixin({
         input: 'text',
@@ -454,6 +558,36 @@ function gerarProducao(produto, quantidade, codigo){
         }
     })
 }
+
+function gerarRelatorio(number){
+
+    swal({
+        type: 'success',
+        title: 'Clique no botão para fazer o download',
+        showConfirmButton: true,
+        showCancelButton: true
+    }).then((result) => {
+        if(result.value){
+            $.ajax({
+                type: 'get',
+                url: 'generatePdfOrder',
+                data: { number : number},
+                success: function(response){
+                    swal.close();
+                },
+                error: function(response){
+                    console.log(response);
+                    swal({
+                        type: 'error',
+                        title: 'Ooops...',
+                        text: 'Algo deu errado, tente novamente.'
+                    });
+                }
+            });
+        }
+    })
+}
+
 // function coresSituacao(situacao){
 //     switch (situacao) {
 //         case 'Em Aberto':

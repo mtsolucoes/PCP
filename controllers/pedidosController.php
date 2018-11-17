@@ -1,9 +1,7 @@
 <?php
 
 class pedidosController extends Controller{
-    public function __construct(){
-        $f = new Facilities();
-    }
+
     public function index(){
         $b = new Bling();
         $apikey = $_SESSION['apiuser'];

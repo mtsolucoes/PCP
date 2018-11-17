@@ -14,6 +14,8 @@ require 'config.php';
 **/
 spl_autoload_register(function($class){
 
+    require_once 'dompdf/autoload.inc.php';
+
     if(file_exists("controllers/".$class.".php")){
         require "controllers/".$class.".php";
     }else if(file_exists("models/".$class.".php")){

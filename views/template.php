@@ -60,8 +60,8 @@
                         <li class="option <?php echo($_GET['url'] == 'relatorios')? 'active': '' ?>"><a href="#subMenu2" class="btn-sub" id="subRelatorios" role="button" aria-hidden="false" aria-controls="subMenu2" data-toggle="collapse" ><em class="fa fa-calendar">&nbsp;</em>Relatórios<span data-toggle="collapse" class="icon float-right"><em class="fas fa-sort-down"></em></span></a></li>
                             <ul id="subMenu2" class="nav menu-int collapse">
                                 <li class="option"><a href="<?php echo BASE_URL; ?>relatorios/index"><span class="fa fa-arrow-right">&nbsp;</span>Mensal</a></li>
-                                <li class="option"><a href="<?php echo BASE_URL; ?>relatorios"><span class="fa fa-arrow-right">&nbsp;</span>Pedidos</a></li>
-                                <li class="option"><a href="#"><span class="fa fa-arrow-right">&nbsp;</span>Produtos Compostos</a></li>
+                                <li class="option"><a href="<?php echo BASE_URL; ?>relatorios/pedidos"><span class="fa fa-arrow-right">&nbsp;</span>Pedidos</a></li>
+                                <li class="option"><a href="<?php echo BASE_URL; ?>relatorios/compostos"><span class="fa fa-arrow-right">&nbsp;</span>Produtos Compostos</a></li>
                             </ul>
                     </ul>
                 </div>
