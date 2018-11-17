@@ -9,7 +9,6 @@
                 <th width="39%">Cliente</th>
                 <th width="10%">Data Pedido</th>
                 <th width="10%">Data Prevista</th>
-                <th width="10%">Data Saída</th>
                 <th width="1%">Situação</th>
                 <th width="10%">Ações</th>
             </thead>
