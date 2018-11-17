@@ -33,8 +33,7 @@
                                     }else{
                                         echo "<td>Sem data</td>";
                                     }
-                                echo "<td>Sem data</td>".
-                                    "<td><i class='fas fa-circle ".preg_replace('/[ -]+/', '-', strtolower($viewDataFim['situacao']))."' title='{$viewDataFim['situacao']}'></i></td>".
+                                echo "<td><i class='fas fa-circle ".preg_replace('/[ -]+/', '-', strtolower($viewDataFim['situacao']))."' title='{$viewDataFim['situacao']}'></i></td>".
                                     "<td><a class='link-swal moreOrderReport' href='#' data-number='{$viewDataFim['numero']}'>Ver Mais</a>".
                                     "</tr>";
                             }
