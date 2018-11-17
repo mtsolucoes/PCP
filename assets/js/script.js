@@ -570,7 +570,7 @@ function gerarRelatorio(number){
         if(result.value){
             $.ajax({
                 type: 'get',
-                url: 'generatePdfOrder',
+                url: 'generateCsvOrder',
                 data: { number : number},
                 success: function(response){
                     swal.close();

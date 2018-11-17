@@ -77,7 +77,7 @@ class relatoriosController extends Controller{
         echo $data;
     }
 
-    public function generatePdfOrder(){
+    public function generateCsvOrder(){
         $b = new Bling();
         $dompdf = new Dompdf();
 
@@ -91,15 +91,37 @@ class relatoriosController extends Controller{
             $data = $b->executeGetOrderNumber($url, $apikey);
             //$data = json_encode($data);
 
-            $dompdf->loadHtml('<p>Hello World<p>');
-            $dompdf->setPaper('A4', 'landscape');
+            $datadois = array (
+                'email@outlook.com',
+                'email2@outlook.com;email3@gmail.com',
+                'email4@outlook.com'
+            );
+            $this->csv($datadois, 'Pedido');
 
-            $dompdf->render();
-
-            $dompdf->stream();
         }
 
 
+    }
+
+
+    public function csv($data, $name){
+        try{
+            $output = sprintf("{$name}_%s.csv", date('d/m/Y'));
+
+            $fp = fopen('php://output', 'w+');
+            header("Content-type: application/octet-stream");  
+            header("Content-disposition: attachment; filename='{$output}'");
+
+            foreach($data as $line){
+                $value = explode(';', $line);
+                fputcsv($fp, $value);
+            }
+            echo $fp;
+            fclose($fp);
+
+        }catch(Excepton $e){
+            throw new Exception($e);
+        }
     }
 }
 
