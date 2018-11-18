@@ -95,6 +95,24 @@ class Composicao extends Model{
             throw new PDOException($e);
         }
     }
+
+    //LISTAR UMA COMPOSIÇÃO POR CÓDIGO
+    public function listarComposicao($codigo){
+        $sql = $this->db->prepare("SELECT * FROM compostos WHERE codigo = :codigo");
+        $sql->bindValue(":codigo", $codigo);
+
+        try{
+            $sql->execute();
+
+            if($sql->rowCount() == 1){
+                $data = $sql->fetchAll();
+                return $data;
+            }
+
+        }catch(PDOException $e){
+            throw new PDOExcpetion($e);
+        }
+    }
 }
 
 ?>

@@ -455,108 +455,123 @@ function tabelaPedidosRelatorio(number){
 }
 
 function gerarProducao(produto, quantidade, codigo){
-    swal.mixin({
-        input: 'text',
-        confirmButtonText: 'Próximo &rarr;',
-        showCancelButton: true,
-        progressSteps: ['1', '2', '3']
-    }).queue([
-        {
-            title: 'Data da produção',
-            text: 'Ex: 10/11/2018',
-            inputValidator: (value) => {
-                return new Promise((resolve) =>{
-                    if(value !== ''){
-                        resolve();
-                    }else{
-                        resolve('Informe a data de produção!!!');
-                    }
-                });
-            }
-        },
-        {
-            title: 'Turno',
-            text: 'Manhã, Tarde ou Noite',
-            inputValidator: (value) => {
-                return new Promise((resolve) =>{
-                    if(value !== ''){
-                        resolve();
-                    }else{
-                        resolve('Informe o turno de trabalho!!!');
-                    }
-                });
-            }
-        },
-        {
-            title: 'Descrição',
-            text: 'Descrição da produção',
-            input: 'textarea',
-            inputValidator: (value) => {
-                return new Promise((resolve) =>{
-                    if(value !== ''){
-                        resolve();
-                    }else{
-                        resolve('Escreva uma descrição sobre a produção!!!');
-                    }
-                });
-            }
-        }
-    ]).then((result) => {
-        if(result.value){
-            $.ajax({
-                type: 'POST',
-                url: 'createProduction',
-                data: {
-                    data: formatDate(result.value[0]),
-                    turno: result.value[1],
-                    descricao: result.value[2]
-                },
-                success: function(resolve){
-                    $.ajax({
-                        type: 'POST',
-                        url: 'getControle',
-                        data: {},
-                        success: function(retorno){
-                            retorno = JSON.parse(retorno);
-                            $.ajax({
-                                type: 'POST',
-                                url: 'saveProduction',
-                                data: { 
-                                    controle: retorno[0],
-                                    codigo : codigo,
-                                    quantidade : quantidade,
-                                    produto: produto
-                                 },
-                                success: function(resultado){
-
-                                },
-                                error: function(msg){
-                                    swal('Oooops...', 'Algo deu errado na produção', 'error');
+    //VERIFICA SE HÁ UM PRODUTO COMPOSTO COM ESSE CODIGO
+    $.ajax({
+        type:'GET',
+        url: 'getComposto',
+        data: { codigo : codigo },
+        success: function(response){
+            if(response){
+                //CASO HAJA O PRODUTO EXECUTA O SCRIPT DE CRIAÇÃO DE PRODUÇÃO
+                swal.mixin({
+                    input: 'text',
+                    confirmButtonText: 'Próximo &rarr;',
+                    showCancelButton: true,
+                    progressSteps: ['1', '2', '3']
+                }).queue([
+                    {
+                        title: 'Data da produção',
+                        text: 'Ex: 10/11/2018',
+                        inputValidator: (value) => {
+                            return new Promise((resolve) =>{
+                                if(value !== ''){
+                                    resolve();
+                                }else{
+                                    resolve('Informe a data de produção!!!');
                                 }
                             });
-                        },
-                        error: function(msg){
-                            swal('Ooooops...', 'Algo deu errado com seu controle', 'error');
                         }
-                    });
-                }
-            }).done(function(response){
-                swal({
-                    title: 'Cadastro de produção',
-                    type: 'success',
-                    text: 'Produção cadastrada com sucesso!',
-                    confirmButtonText: 'Fechar'
-                });
-            }).fail(function(e){
-                swal({
-                    title: 'Oooops...',
-                    text: 'Algo deu errado na operação, tente novamente',
-                    type: 'error',
-                    confirmButtonText: 'Sair'
-                });
-            });
+                    },
+                    {
+                        title: 'Turno',
+                        text: 'Manhã, Tarde ou Noite',
+                        inputValidator: (value) => {
+                            return new Promise((resolve) =>{
+                                if(value !== ''){
+                                    resolve();
+                                }else{
+                                    resolve('Informe o turno de trabalho!!!');
+                                }
+                            });
+                        }
+                    },
+                    {
+                        title: 'Descrição',
+                        text: 'Descrição da produção',
+                        input: 'textarea',
+                        inputValidator: (value) => {
+                            return new Promise((resolve) =>{
+                                if(value !== ''){
+                                    resolve();
+                                }else{
+                                    resolve('Escreva uma descrição sobre a produção!!!');
+                                }
+                            });
+                        }
+                    }
+                ]).then((result) => {
+                    if(result.value){
+                        $.ajax({
+                            type: 'POST',
+                            url: 'createProduction',
+                            data: {
+                                data: formatDate(result.value[0]),
+                                turno: result.value[1],
+                                descricao: result.value[2]
+                            },
+                            success: function(resolve){
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'getControle',
+                                    data: {},
+                                    success: function(retorno){
+                                        retorno = JSON.parse(retorno);
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: 'saveProduction',
+                                            data: { 
+                                                controle: retorno[0],
+                                                codigo : codigo,
+                                                quantidade : quantidade,
+                                                produto: produto
+                                             },
+                                            success: function(resultado){
+            
+                                            },
+                                            error: function(msg){
+                                                swal('Oooops...', 'Algo deu errado na produção', 'error');
+                                            }
+                                        });
+                                    },
+                                    error: function(msg){
+                                        swal('Ooooops...', 'Algo deu errado com seu controle', 'error');
+                                    }
+                                });
+                            }
+                        }).done(function(response){
+                            swal({
+                                title: 'Cadastro de produção',
+                                type: 'success',
+                                text: 'Produção cadastrada com sucesso!',
+                                confirmButtonText: 'Fechar'
+                            });
+                        }).fail(function(e){
+                            swal({
+                                title: 'Oooops...',
+                                text: 'Algo deu errado na operação, tente novamente',
+                                type: 'error',
+                                confirmButtonText: 'Sair'
+                            });
+                        });
+                    }
+                })
+
+            }else{
+                swal('Oooops...', 'O produto do pedido não está cadastrado.', 'error');
+            }
         }
-    })
+    });
+
 }
 
 function gerarRelatorio(number){

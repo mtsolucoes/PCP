@@ -74,6 +74,16 @@ class pedidosController extends Controller{
         }
     }
 
+    public function getComposto(){
+        $c = new Composicao();
+
+        if(!empty($_GET['codigo'])){
+            $produto = $c->listarComposicao($_GET['codigo']);
+
+            echo $produto;
+        }
+    }
+
     //FUNCTION PARA LIMPAR STRING DE CARACTERES ESPECIAIS
     // public function limparString($string){
     //     $from = "áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ";
