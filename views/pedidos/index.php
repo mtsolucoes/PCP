@@ -5,10 +5,10 @@
     <div class="co-sm-12">
         <form method="GET" class="text-center">
             <div class="form-group col-sm-3 d-inline-flex" >
-                <input type="text" class="form-control" name="searchClient" id="searchClient" placeholder="Nome do Cliente..." />
+                <input type="text" class="form-control" autocomplete="off" name="searchClient" id="searchClient" placeholder="Nome do Cliente..." />
             </div>
             <div class="form-group col-sm-3 d-inline-flex" >
-                <input type="text" class="form-control" name="searchProduct" id="searchProduct" placeholder="Nome do Produto..." disabled/>
+                <input type="text" class="form-control" autocomplete="off" name="searchProduct" id="searchProduct" placeholder="Nome do Produto..." disabled/>
             </div>
             <button type="submit" class="btn btn-search btn-primary">Pesquisar</button>
             <a href="<?php echo BASE_URL; ?>pedidos/index" class="btn btn-search btn-primary"><i class="fas fa-redo"></i> Recarregar</a>

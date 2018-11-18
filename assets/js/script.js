@@ -16,7 +16,7 @@ function calculaPrecoSugerido(){
     }
 
     result *= markup;
-
+    result = arredondar(result);
     $('#precoSugerido').val('R$ ' + result);
 }
 
@@ -573,7 +573,8 @@ function gerarRelatorio(number){
                 url: 'generateCsvOrder',
                 data: { number : number},
                 success: function(response){
-                    swal.close();
+                    console.log(response);
+                    //swal.close();
                 },
                 error: function(response){
                     console.log(response);

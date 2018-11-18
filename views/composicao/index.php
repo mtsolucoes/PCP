@@ -5,7 +5,7 @@
     <div class="co-sm-12">
         <form method="POST" class="text-center">
             <div class="form-group col-sm-5 d-inline-flex" >
-                <input type="text" class="form-control" name="search" id="search" placeholder="Código do produto..." />
+                <input type="text" class="form-control" autocomplete="off" name="search" id="search" placeholder="Código do produto..." />
             </div>
             <button type="submit" class="btn btn-search btn-primary">Pesquisar</button>
             <div class="d-inline-block">

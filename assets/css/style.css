@@ -231,6 +231,40 @@ footer{
 .em-andamento{
     color: #0065f9;
 }
+.info-markup{
+    display: none;
+    position: absolute;
+    background-color: #dcdcdc;
+    z-index: 1;
+    left: 100px;
+    transform: translateY(-45px);
+    border-radius: 5px;
+    padding: 12px;
+    color: #000;
+    font-weight: 500;
+}
+.info-markup::before{
+    content: "";
+    display: none;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #dcdcdc;
+    position: absolute;
+    left: -15px;
+}
+.info-markup-icon{
+    cursor: pointer;
+}
+.info-markup-icon:hover + .info-markup{
+    display: block !important;
+}
+.info-markup-icon:hover + .info-markup:before{
+    display: inline-block !important;
+}
 
 /*-------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------

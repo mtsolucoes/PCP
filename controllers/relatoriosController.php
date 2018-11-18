@@ -108,7 +108,7 @@ class relatoriosController extends Controller{
         try{
             $output = sprintf("{$name}_%s.csv", date('d/m/Y'));
 
-            $fp = fopen('php://output', 'w+');
+            $fp = fopen('php://output', 'w');
             header("Content-type: application/octet-stream");  
             header("Content-disposition: attachment; filename='{$output}'");
 
@@ -116,7 +116,6 @@ class relatoriosController extends Controller{
                 $value = explode(';', $line);
                 fputcsv($fp, $value);
             }
-            echo $fp;
             fclose($fp);
 
         }catch(Excepton $e){

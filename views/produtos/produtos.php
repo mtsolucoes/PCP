@@ -5,7 +5,7 @@
     <div class="co-sm-12">
         <form method="GET" class="text-center">
             <div class="form-group col-sm-5 d-inline-flex" >
-                <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Código ou Nome do Item..." />
+                <input type="text" class="form-control" autocomplete="off" name="pesquisa" id="pesquisa" placeholder="Código ou Nome do Item..." />
             </div>
             <button type="submit" class="btn btn-pesquisa btn-primary">Pesquisar</button>
             <a href="<?php echo BASE_URL; ?>produtos" class="btn btn-pesquisa btn-primary"><i class="fas fa-redo"></i> Recarregar</a>

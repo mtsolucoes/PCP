@@ -29,7 +29,8 @@
                     <input type="text" class="form-control col-sm-12" id="codigo" name="codigo" value="<?php echo $viewData['0']['codigo'] ?>" disabled/>
                 </div>
                 <div class="form-group col-sm-4">
-                    <label for="markup" class="control-label">Markup:</label>
+                    <label for="markup" class="control-label">Markup:</label>  <i class="fas fa-info-circle info-markup-icon"></i>
+                    <div class="info-markup">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore, cum neque sed numquam illo voluptates ad aspernatur velit ab placeat maiores asperiores</div>
                     <input type="text" class="form-control col-sm-12" id="markup" name="markup" value="<?php echo $viewData['0']['markup'] ?>" disabled/>
                 </div>
             </div>
