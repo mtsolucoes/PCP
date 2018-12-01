@@ -11,7 +11,7 @@ class homeController extends Controller{
         $data = $b->executeGetOrderOnOpen($url, $apikey);  
 
         $datavm = array(
-            "demanda" => 0,
+            "pedidos" => 0,
             "um" => 1,
             "dois" => 2,
             "tres" => 3,
@@ -22,10 +22,9 @@ class homeController extends Controller{
         );
 
         foreach($data as $d){
-            $d = (array) $d->pedido->itens;
+            $d = (array) $d;
             foreach($d as $vm){
-                $vm = (array) $vm->item;
-                $datavm['demanda'] += $vm['quantidade'];
+                $datavm['pedidos'] += 1;
             }
         }
 

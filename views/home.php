@@ -11,10 +11,10 @@
         <div class="col-sm-3">
             <div class="col-sm-12 menu-secondary">
                 <div class="col-sm-12 p-4">
-                    <h5>Demanda Atual</h5>
+                    <h5>Pedidos Abertos</h5>
                 </div>
                 <div class="col-sm-12 text-center">
-                    <h3><?php echo $vmData['demanda']; ?> peças</h3>
+                    <h3><?php echo $vmData['pedidos']; ?> pedidos</h3>
                 </div>
             </div>
             <div class="col-sm-12 menu-secondary">
@@ -45,7 +45,15 @@ month = day.getMonth() + 1;
 //------GRÁFICO--------\\
 var data = {
     // A labels array that can contain any sort of values
-    labels: [today +'/'+ month, (today + 1) +'/'+ month, (today + 2) +'/'+ month, (today + 3) +'/'+ month, (today + 4) +'/'+ month, (today + 5) +'/'+ month, (today + 6) +'/'+ month],
+    labels: [
+               today +'/'+ month, 
+              (today + 1) +'/'+ month, 
+              (today + 2) +'/'+ month, 
+              (today + 3) +'/'+ month, 
+              (today + 4) +'/'+ month, 
+              (today + 5) +'/'+ month, 
+              (today + 6) +'/'+ month
+            ],
     // Our series array that contains series objects or in this case series data arrays
     series: [
       [um, dois, tres, quatro, cinco, seis, sete]
