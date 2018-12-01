@@ -345,7 +345,6 @@ function tabelaPedidos(number){
             let retornoItens = retornoDireto.itens;
             let retornoCliente = retornoDireto['cliente'];
 
-
             let pedido = `<div class='col-md-12 text-left'>
             <ul>
             <li><strong>Nome: </strong>${retornoCliente['nome']}</li>
@@ -484,7 +483,7 @@ function gerarProducao(produto, quantidade, codigo){
                     },
                     {
                         title: 'Turno',
-                        text: 'Manhã, Tarde ou Noite',
+                        text: 'Ex: Manhã, Tarde ou Noite',
                         inputValidator: (value) => {
                             return new Promise((resolve) =>{
                                 if(value !== ''){

@@ -53,7 +53,6 @@
                             <ul id="subMenu1" class="nav menu-int collapse">
                                 <li class="option"><a href="<?php echo BASE_URL; ?>controle"><span class="fa fa-arrow-right">&nbsp;</span>Criar Controle</a></li>
                                 <li class="option"><a href="<?php echo BASE_URL; ?>controle/list"><span class="fa fa-arrow-right">&nbsp;</span>Consultar Controles</a></li>
-                                <li class="option"><a href="#"><span class="fa fa-arrow-right">&nbsp;</span>Sub Opção 3</a></li>
                             </ul>
                         <li class="option <?php echo($_GET['url'] == '')? 'active': '' ?>"><a href="<?php echo BASE_URL; ?>composicao/index"><em class="fa fa-calendar">&nbsp;</em>Composição</a></li>
                         <li class="option <?php echo($_GET['url'] == 'pedidos/index')? 'active': '' ?>"><a href="<?php echo BASE_URL; ?>pedidos/index"><em class="fa fa-calendar">&nbsp;</em>Pedidos</a></li>                    
@@ -95,6 +94,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Template Content -->
             <?php $this->loadViewInTemplate($viewName, $viewData, $vmData) ?>
         </div>
         <footer class="col-sm-9 col-lg-10 offset-lg-2 offset-sm-3 p-0 mt-5">
