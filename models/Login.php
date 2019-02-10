@@ -49,14 +49,20 @@ class Login extends Model{
 
     //VALIDAR SE O LOGIN DO USUARIO AINDA ESTÁ ATIVO(10 min)
     public function verificarLogin(){
-        if(time() - $_SESSION['last-access'] > 3600 ){
+        if(!isset($_SESSION['lguser']) || isset($_SESSION['lguser']) && empty($_SESSION['lguser'])){
+
+            header("Location:".BASE_URL."login");
+
+        }else if(time() - $_SESSION['last-access'] > 3600 ){
+
             unset($_SESSION['lguser']);
-            if(!isset($_SESSION['lguser']) || isset($_SESSION['lguser']) && empty($_SESSION['lguser'])){
-                header("Location:".BASE_URL."login");
-            }
+
         }else{
+
             $_SESSION['last-access'] = time();
+            
         }
+        
 
     }
 
