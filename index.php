@@ -28,7 +28,7 @@ spl_autoload_register(function($class){
 
 $verificarLogin = new Login();
 $core = new Core();
-if($_GET['url'] != 'login'){
+if($_GET['url'] != 'login' && $_GET['url'] != 'login/cadastro'){
     $verificarLogin->verificarLogin();
 }
 $core->run();

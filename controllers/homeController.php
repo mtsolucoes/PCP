@@ -21,10 +21,12 @@ class homeController extends Controller{
             "sete" => 35
         );
 
-        foreach($data as $d){
-            $d = (array) $d;
-            foreach($d as $vm){
-                $datavm['pedidos'] += 1;
+        if($data){
+            foreach($data as $d){
+                $d = (array) $d;
+                foreach($d as $vm){
+                    $datavm['pedidos'] += 1;
+                }
             }
         }
 

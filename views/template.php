@@ -25,7 +25,9 @@
         <header>
             <div class="row m-0 header-tmp">
                 <div class="col-sm-6">
-                    <img src="<?php echo BASE_URL; ?>/assets/images/logo3.png" height="50px" class="float-left logo" />
+                    <a href="<?php echo BASE_URL; ?>home">
+                        <img src="<?php echo BASE_URL; ?>/assets/images/logo3.png" height="50px" class="float-left logo" />
+                    </a>
                 </div>
                 <div class="col-sm-6 pr-5">
                     <a href="<?php echo BASE_URL; ?>login/logOut" class="link-logoff float-right">Sair</a>
